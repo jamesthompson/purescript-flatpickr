@@ -11,6 +11,7 @@ module Flatpickr
   , redraw
   , set
   , setDate
+  , setDateRange
   , toggle
   , onChange
   , onOpen
@@ -161,6 +162,9 @@ foreign import setDateImpl :: forall eff. Fn3 Foreign Boolean Flatpickr (FlatEff
 
 setDate :: forall eff. DateType -> Boolean -> Flatpickr -> FlatEff eff String
 setDate date = runFn3 setDateImpl (dateTypeToForeign date)
+
+setDateRange :: forall eff. DateRange -> Boolean -> Flatpickr -> FlatEff eff String
+setDateRange dateRange = runFn3 setDateImpl (dateRangeToForeign dateRange)
 
 foreign import toggle :: forall eff. Flatpickr -> FlatEff eff Unit
 
